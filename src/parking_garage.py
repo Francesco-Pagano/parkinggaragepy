@@ -57,8 +57,10 @@ class ParkingGarage:
         exit_minute = exit_time.minute
 
         count = exit_hour - entry_hour
+
         if exit_minute - entry_minute > 0:
             count += 1
+
         fee = count * 2.5
 
         if exit_time.weekday() in [5, 6]:
