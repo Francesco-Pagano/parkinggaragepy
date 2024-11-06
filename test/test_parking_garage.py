@@ -15,3 +15,7 @@ class TestParkingGarage(TestCase):
         system = ParkingGarage()
         occupied = system.check_occupancy(system.INFRARED_PIN1)
         self.assertTrue(occupied)
+
+    def test_check_occupancy_raises_error(self):
+        system = ParkingGarage()
+        self.assertRaises(ParkingGarageError, system.check_occupancy, -1)
