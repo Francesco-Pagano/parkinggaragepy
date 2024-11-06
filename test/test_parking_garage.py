@@ -54,3 +54,10 @@ class TestParkingGarage(TestCase):
         system.open_garage_door()
         mock_servo.assert_called_with(12)
         self.assertTrue(system.open_garage_door)
+
+    @patch.object(GPIO, "output")
+    def test_turn_on_red_light(self, mock_light: Mock):
+        system = ParkingGarage()
+        system.turn_on_red_light()
+        mock_light.assert_called_with(system.LED_PIN, True)
+        self.assertTrue(system.red_light_on)
