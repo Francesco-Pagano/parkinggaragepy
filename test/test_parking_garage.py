@@ -41,3 +41,9 @@ class TestParkingGarage(TestCase):
         fee = system.calculate_parking_fee(datetime(2024, 11, 6, 14, 0))
         self.assertEqual(7.5, fee)
 
+    @patch.object(SDL_DS3231, "read_datetime")
+    def test_calculate_weekend_parking_fee_different_minutes(self, mock_exit_time: Mock):
+        mock_exit_time.return_value = datetime(2024, 11, 3, 16, 1)
+        system = ParkingGarage()
+        fee = system.calculate_parking_fee(datetime(2024, 11, 3, 14, 0))
+        self.assertEqual(9.375, fee)
