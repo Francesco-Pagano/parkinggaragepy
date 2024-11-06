@@ -85,8 +85,10 @@ class ParkingGarage:
         self.red_light_off = False
 
     def manage_red_light(self) -> None:
-        # To be implemented
-        pass
+        if self.get_number_occupied_spots() == 3:
+            self.turn_on_red_light()
+        else:
+            self.turn_off_red_light()
 
     def change_servo_angle(self, duty_cycle):
         """
