@@ -40,3 +40,4 @@ class TestParkingGarage(TestCase):
         system = ParkingGarage()
         fee = system.calculate_parking_fee(datetime(2024, 11, 6, 14, 0))
         self.assertEqual(7.5, fee)
+

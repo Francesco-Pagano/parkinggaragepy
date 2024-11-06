@@ -52,7 +52,13 @@ class ParkingGarage:
         exit_time = self.rtc.read_datetime()
         entry_hour = entry_time.hour
         exit_hour = exit_time.hour
+
+        entry_minute = entry_time.minute
+        exit_minute = exit_time.minute
+
         count = exit_hour - entry_hour
+        if exit_minute - entry_minute > 0:
+            count += 1
         return count * 2.5
 
     def open_garage_door(self) -> None:
